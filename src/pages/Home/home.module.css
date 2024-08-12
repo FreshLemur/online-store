@@ -1,0 +1,13 @@
+.homeWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 95vh;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.homeText {
+  max-width: 1000px;
+}
