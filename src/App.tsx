@@ -1,11 +1,11 @@
 import NavBar from "./components/NavBar";
-import Products from "./pages/Products/Products";
+import Checkout from "./pages/Checkout/Checkout";
 
 function App() {
   return (
     <>
       <NavBar />
-      <Products />
+      <Checkout />
     </>
   );
 }

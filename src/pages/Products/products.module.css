@@ -15,6 +15,7 @@
   align-items: center;
   gap: 10px;
   transition: 0.15s;
+  position: relative;
 
   &:hover {
     background-color: rgba(144, 144, 145, 0.347);
@@ -54,4 +55,13 @@
     padding: 5.5px 11.5px;
     font-size: 16.5px;
   }
+}
+
+.additionalInfo {
+  padding: 10px 0;
+  position: absolute;
+  top: 433px;
+  background-color: rgb(26, 26, 26);
+  border: 2px solid rgba(144, 144, 145, 0.247);
+  border-radius: 10px;
 }
