@@ -1,0 +1,53 @@
+.navBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(144, 144, 145, 0.247);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.navList {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+}
+
+.navLink {
+  font-size: 24px;
+  transition: 0.15s;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px; /* Висота підкреслення */
+    background-color: white; /* Колір підкреслення */
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    transition: width 0.125s ease-in-out; /* Анімація розширення */
+  }
+
+  &:hover::after {
+    width: 100%; /* Розширюємо підкреслення на всю ширину */
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  &:focus-visible::after {
+    width: 100%;
+  }
+}
+
+.cartQuantity {
+  color: white;
+  background-color: black;
+  padding: 7px 12.5px;
+  border-radius: 100px;
+  user-select: none;
+}

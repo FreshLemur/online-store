@@ -1,7 +1,7 @@
 .checkoutMainWrapper {
   background-color: rgba(144, 144, 145, 0.247);
   border-radius: 10px;
-  height: 700px;
+  padding: 10px;
 }
 
 .checkoutTitle {
@@ -17,15 +17,58 @@
 .checkoutShippingWrapper {
   display: flex;
   flex-direction: column;
+  gap: 10px;
+}
+
+.checkoutLabel {
+  text-align: center;
 }
 
 .checkoutInput {
   background-color: black;
   transition: 0.125;
   border-radius: 10px;
+  width: 400px;
+  height: 40px;
+  font-size: 20px;
+  border: none;
+  transition: 0.125s;
 }
 
 .checkoutInput:focus {
+  width: 420px;
+  height: 45px;
   border: 1px solid white;
   outline: none;
+}
+
+.checkoutPaymentSection {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.checkoutButtonSection {
+  display: flex;
+  justify-content: center;
+}
+
+.checkoutButton {
+  background-color: limegreen;
+  border: none;
+  border-radius: 10px;
+  width: fit-content;
+  padding: 5px 10px;
+  font-size: 23px;
+  cursor: pointer;
+  transition: 0.15s;
+
+  &:hover,
+  &:focus {
+    background-color: rgb(96, 241, 96);
+    border: 1px solid white;
+    padding: 5.5px 11.5px;
+    font-size: 24px;
+    outline: none;
+  }
 }
