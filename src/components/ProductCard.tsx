@@ -2,6 +2,8 @@ import styles from "../pages/Products/products.module.css";
 import { ProductData } from "../data/products";
 import additionalInfo from "../data/additionalInfo";
 import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { addItem } from "../store/cartDataSlice";
 
 interface ProductCardProps {
   product: ProductData;
@@ -10,13 +12,27 @@ interface ProductCardProps {
 export default function ProductCard({ product }: ProductCardProps) {
   const [showAdditionalInfo, setShowAdditionalInfo] = useState<boolean>(false);
 
-  const handleToggle = () => {
+  const dispatch = useDispatch();
+
+  const handleToggleAdditionalInfo = () => {
     setShowAdditionalInfo(!showAdditionalInfo);
   };
 
   const productAdditionalInfo = additionalInfo.find(
     (info) => info.id === product.id
   );
+
+  const handleToggleAddToCart = () => {
+    dispatch(
+      addItem({
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        imageUrl: product.imageUrl,
+        quantity: 1,
+      })
+    );
+  };
 
   return (
     <div className={styles.productCard} key={product.id}>
@@ -28,7 +44,10 @@ export default function ProductCard({ product }: ProductCardProps) {
       />
       <p>{product.price.toFixed(2)}</p>
       <p className={styles.cardDescription}>{product.description}</p>
-      <button onClick={handleToggle} className={styles.cardButton}>
+      <button
+        onClick={handleToggleAdditionalInfo}
+        className={styles.cardButton}
+      >
         {showAdditionalInfo ? "Згорнути" : "Детальніше"}
       </button>
       {showAdditionalInfo && productAdditionalInfo && (
@@ -38,7 +57,9 @@ export default function ProductCard({ product }: ProductCardProps) {
               {detail}
             </p>
           ))}
-          <button className={styles.cardButton}>Додати в кошик</button>
+          <button className={styles.cardButton} onClick={handleToggleAddToCart}>
+            Додати в кошик
+          </button>
         </div>
       )}
     </div>

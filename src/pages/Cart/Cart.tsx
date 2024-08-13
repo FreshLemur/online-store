@@ -21,10 +21,11 @@ export default function Cart() {
             id="cartQuantity"
           />
         </section>
+        <h2>Ціна: {""}</h2>
         <button className={styles.cartDeleteButton}>Видалити</button>
       </div>
       <div className={styles.totalQuantity}>
-        <h2>Total quantity: 0</h2>
+        <h2>Загальна сума: 0</h2>
       </div>
     </div>
   );
