@@ -13,6 +13,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   const [showAdditionalInfo, setShowAdditionalInfo] = useState<boolean>(false);
 
   const dispatch = useDispatch();
+  const cartState = useSelector((state: any) => state.cartState);
 
   const handleToggleAdditionalInfo = () => {
     setShowAdditionalInfo(!showAdditionalInfo);
@@ -32,6 +33,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         quantity: 1,
       })
     );
+    console.log(cartState);
   };
 
   return (
