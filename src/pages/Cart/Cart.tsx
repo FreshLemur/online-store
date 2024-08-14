@@ -8,6 +8,7 @@ import {
 import { RootState } from "../../store/store";
 import styles from "./cart.module.css";
 import { useDispatch, useSelector } from "react-redux";
+import CartItem from "./CartItem";
 
 export default function Cart() {
   const cartState = useSelector((state: RootState) => state.cartState.items);
@@ -46,50 +47,16 @@ export default function Cart() {
     <div className={styles.cartWrapper}>
       {cartState.length > 0 ? (
         cartState.map((item) => (
-          <>
-            <div className={styles.cartProductWrapper} key={item.id}>
-              <img
-                className={styles.cartProductImage}
-                src={item.imageUrl}
-                alt={item.name}
-              />
-              <h2>{item.name}</h2>
-
-              <section className={styles.cartQuantitySection}>
-                <label
-                  className={styles.cartQuantityLabel}
-                  htmlFor="cartQuantity"
-                >
-                  Кількість:
-                </label>
-                <input
-                  className={styles.cartQuantityInput}
-                  type="number"
-                  name="cartQuantity"
-                  id="cartQuantity"
-                  value={item.quantity}
-                  onChange={(e) => quantityChangeHandler(e, item.id)}
-                />
-              </section>
-
-              <h2>Ціна: {item.price}</h2>
-
-              <button
-                className={styles.cartDeleteButton}
-                onClick={() => handleDelete(item.id)}
-              >
-                Видалити
-              </button>
-              <div className={styles.totalQuantity}></div>
-            </div>
-          </>
+          <CartItem
+            item={item}
+            quantityChangeHandler={quantityChangeHandler}
+            handleDelete={handleDelete}
+          />
         ))
       ) : (
-        <>
-          <h1 className={styles.emptyCartTitle}>
-            Ваш кошик порожній, додайте товари до кошику.
-          </h1>
-        </>
+        <h1 className={styles.emptyCartTitle}>
+          Ваш кошик порожній, додайте товари до кошику.
+        </h1>
       )}
       {cartState.length > 0 && (
         <h2 className={styles.totalAmount}>Загальна сума: {totalAmount}</h2>
