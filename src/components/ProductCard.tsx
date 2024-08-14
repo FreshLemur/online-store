@@ -2,8 +2,8 @@ import styles from "../pages/Products/products.module.css";
 import { ProductData } from "../data/products";
 import additionalInfo from "../data/additionalInfo";
 import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { addItem } from "../store/cartDataSlice";
+import { useDispatch } from "react-redux";
+import { addItem, totalPrice } from "../store/cartDataSlice";
 
 interface ProductCardProps {
   product: ProductData;
@@ -13,7 +13,6 @@ export default function ProductCard({ product }: ProductCardProps) {
   const [showAdditionalInfo, setShowAdditionalInfo] = useState<boolean>(false);
 
   const dispatch = useDispatch();
-  const cartState = useSelector((state: any) => state.cartState);
 
   const handleToggleAdditionalInfo = () => {
     setShowAdditionalInfo(!showAdditionalInfo);
@@ -33,7 +32,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         quantity: 1,
       })
     );
-    console.log(cartState);
+    dispatch(totalPrice());
   };
 
   return (

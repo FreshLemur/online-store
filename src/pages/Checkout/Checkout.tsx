@@ -1,6 +1,25 @@
+import { useDispatch, useSelector } from "react-redux";
 import styles from "./checkout.module.css";
+import { RootState } from "../../store/store";
+import { clearCart, totalPrice } from "../../store/cartDataSlice";
 
 export default function Checkout() {
+  const totalAmount = useSelector((state: RootState) => state.cartState.total);
+
+  const dispatch = useDispatch();
+
+  const handleClickCheckoutButton = () => {
+    if (totalAmount === 0) {
+      alert(
+        "Будь ласка, додайте товари до кошику перед оформленням замовлення."
+      );
+    } else {
+      dispatch(clearCart());
+      dispatch(totalPrice());
+      alert("Замовлення успішно оформлено!");
+    }
+  };
+
   return (
     <div className={styles.checkoutMainWrapper}>
       {" "}
@@ -94,7 +113,13 @@ export default function Checkout() {
         </section>
       </section>
       <section className={styles.checkoutButtonSection}>
-        <button className={styles.checkoutButton}>Оформити замовлення</button>
+        <h2>Загальна сума замовлення: {totalAmount}</h2>
+        <button
+          className={styles.checkoutButton}
+          onClick={handleClickCheckoutButton}
+        >
+          Оформити замовлення
+        </button>
       </section>
     </div>
   );

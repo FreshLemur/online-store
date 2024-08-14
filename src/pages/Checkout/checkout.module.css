@@ -50,7 +50,9 @@
 
 .checkoutButtonSection {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  gap: 25px;
+  align-items: center;
 }
 
 .checkoutButton {
