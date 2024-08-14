@@ -27,9 +27,16 @@
 }
 
 .cartQuantityInput {
-  color: black;
+  color: white;
   text-align: center;
   width: 50px;
+  overflow: hidden;
+  padding: 0;
+  background-color: black;
+  outline: none;
+  border-radius: 10px;
+  box-shadow: none;
+  border: 1px solid white;
 }
 
 .cartDeleteButton {
@@ -54,4 +61,12 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
+}
+
+.totalAmount {
+  text-align: end;
+}
+
+.emptyCartTitle {
+  text-align: center;
 }
